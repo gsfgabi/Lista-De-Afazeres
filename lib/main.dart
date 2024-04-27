@@ -61,6 +61,8 @@ class _ToDoListState extends State<ToDoList> {
   }
 
   void _editarTarefa(int index) {
+    String tarefaOriginal = _tarefas[index];
+
     showDialog(
       context: context,
       builder: (context) {
@@ -78,6 +80,9 @@ class _ToDoListState extends State<ToDoList> {
           actions: [
             TextButton(
               onPressed: () {
+                setState(() {
+                  _tarefas[index] = tarefaOriginal;
+                });
                 Navigator.of(context).pop();
               },
               child: const Text('Cancelar'),
